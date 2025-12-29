@@ -7,16 +7,10 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: write
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -47,22 +41,28 @@ jobs:
       - name: Build Storybook
         run: pnpm build-storybook
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+      - name: Deploy to personal repository
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: "./storybook-static"
+          # 개인 레포 클론
+          git clone "https://${{ secrets.PERSONAL_GITHUB_TOKEN }}@github.com/choihooo/DDS-storybook.git" deploy-repo
+          cd deploy-repo
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          # gh-pages 브랜치 생성 또는 체크아웃
+          git checkout -b gh-pages 2>/dev/null || git checkout gh-pages
 
+          # 기존 파일 삭제
+          find . -maxdepth 1 ! -name '.git' ! -name '.' -exec rm -rf {} + 2>/dev/null || true
+
+          # Storybook 빌드 결과 복사
+          cp -r ../storybook-static/* .
+          touch .nojekyll
+
+          # 커밋 및 푸시
+          git add -A
+          git commit -m "Deploy Storybook from ${{ github.sha }}" || echo "No changes to commit"
+          git push origin gh-pages --force
+        env:
+          PERSONAL_GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
