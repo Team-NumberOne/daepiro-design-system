@@ -51,8 +51,15 @@ jobs:
       - name: Build Storybook
         run: pnpm build-storybook
 
+      - name: Start Storybook server
+        run: |
+          npx http-server storybook-static -p 6006 --silent &
+          echo "Waiting for Storybook server to start..."
+          sleep 5
+          curl --retry 10 --retry-delay 2 --retry-connrefused http://localhost:6006 || exit 1
+
       - name: Run Storybook tests
-        run: pnpm test:storybook
+        run: pnpm test:storybook --url http://localhost:6006
 
       - name: Build
         run: pnpm build
