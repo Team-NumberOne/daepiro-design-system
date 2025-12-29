@@ -1,0 +1,65 @@
+name: Test
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@team-numberone"
+          always-auth: true
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Backup and remove .npmrc for CI
+        run: |
+          if [ -f .npmrc ]; then
+            mv .npmrc .npmrc.backup
+          fi
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps
+
+      - name: Run linter
+        run: pnpm check
+
+      - name: Run unit tests
+        run: pnpm test:run
+
+      - name: Build Storybook
+        run: pnpm build-storybook
+
+      - name: Start Storybook server
+        run: |
+          npx http-server storybook-static -p 6006 --silent &
+          echo "Waiting for Storybook server to start..."
+          sleep 5
+          curl --retry 10 --retry-delay 2 --retry-connrefused http://localhost:6006 || exit 1
+
+      - name: Run Storybook tests
+        run: pnpm test:storybook --url http://localhost:6006
+
+      - name: Build
+        run: pnpm build
