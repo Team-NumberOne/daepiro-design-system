@@ -1,8 +1,8 @@
-import { style, styleVariants } from "@vanilla-extract/css";
 import { colors } from "@/tokens/colors";
 import { semanticColors } from "@/tokens/semantic-colors";
 import { shadows } from "@/tokens/shadows";
 import { typography } from "@/tokens/typography";
+import { style, styleVariants } from "@vanilla-extract/css";
 
 const baseButton = style({
   ...typography["subtitle-1"],

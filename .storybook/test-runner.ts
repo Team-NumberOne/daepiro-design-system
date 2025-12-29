@@ -22,9 +22,7 @@ const config: TestRunnerConfig = {
       if (violation.id === "color-contrast") {
         // color-contrast는 워닝으로만 출력하고 테스트 실패로 처리하지 않음
         console.warn(
-          `[A11y Warning] color-contrast: ${violation.description}\n` +
-            `노드: ${violation.nodes.map((n) => n.html).join("\n")}\n` +
-            `자세한 내용은 Button.stories.tsx 문서 참조`
+          `[A11y Warning] color-contrast: ${violation.description}\n노드: ${violation.nodes.map((n) => n.html).join("\n")}\n자세한 내용은 Button.stories.tsx 문서 참조`
         );
         return false; // violations에서 제외 (테스트 실패로 처리하지 않음)
       }

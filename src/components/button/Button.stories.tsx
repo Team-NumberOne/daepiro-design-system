@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import { Icon } from "@/icons";
 import { colors } from "@/tokens/colors";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
 
 const meta = {
@@ -152,8 +152,8 @@ export const AllStates: Story = {
             </tr>
           </thead>
           <tbody>
-            {buttonRows.map((row, index) => (
-              <tr key={index}>
+            {buttonRows.map((row) => (
+              <tr key={row.label}>
                 <td
                   style={{
                     padding: "16px",
