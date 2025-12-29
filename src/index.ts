@@ -8,3 +8,4 @@ export * from "./icons";
 export * from "./tokens/colors";
 export * from "./tokens/shadows";
 export * from "./tokens/typography";
+export * from "./tokens/semantic-colors";

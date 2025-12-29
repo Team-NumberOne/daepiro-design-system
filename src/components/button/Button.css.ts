@@ -1,5 +1,6 @@
 import { style, styleVariants } from "@vanilla-extract/css";
 import { colors } from "@/tokens/colors";
+import { semanticColors } from "@/tokens/semantic-colors";
 import { shadows } from "@/tokens/shadows";
 import { typography } from "@/tokens/typography";
 
@@ -33,20 +34,20 @@ export const buttonVariants = styleVariants({
   default: [
     baseButton,
     {
-      backgroundColor: colors.G[50],
-      color: colors.G[700],
+      backgroundColor: semanticColors.gray[50],
+      color: semanticColors.gray[700],
       selectors: {
         "&:focus-visible": {
-          outline: `2px solid ${colors.G[700]}`,
+          outline: `2px solid ${semanticColors.gray[700]}`,
           outlineOffset: "2px",
         },
         "&:hover:not(:disabled)": {
-          backgroundColor: colors.G[75],
-          color: colors.G[600],
+          backgroundColor: semanticColors.gray[75],
+          color: semanticColors.gray[600],
         },
         "&:active:not(:disabled)": {
-          backgroundColor: colors.G[75],
-          color: colors.G[600],
+          backgroundColor: semanticColors.gray[75],
+          color: semanticColors.gray[600],
           boxShadow: shadows["btn-pressed"],
         },
       },
@@ -55,19 +56,19 @@ export const buttonVariants = styleVariants({
   gray: [
     baseButton,
     {
-      backgroundColor: colors.G[700],
+      backgroundColor: semanticColors.gray[700],
       color: colors.white,
       selectors: {
         "&:focus-visible": {
-          outline: `2px solid ${colors.G[300]}`,
+          outline: `2px solid ${semanticColors.gray[300]}`,
           outlineOffset: "2px",
         },
         "&:hover:not(:disabled)": {
-          backgroundColor: colors.G[600],
+          backgroundColor: semanticColors.gray[600],
           color: colors.white,
         },
         "&:active:not(:disabled)": {
-          backgroundColor: colors.G[600],
+          backgroundColor: semanticColors.gray[600],
           color: colors.white,
           boxShadow: shadows["btn-pressed"],
         },
@@ -77,22 +78,22 @@ export const buttonVariants = styleVariants({
   primary: [
     baseButton,
     {
-      backgroundColor: colors.O[500],
+      backgroundColor: semanticColors.primary[500],
       color: colors.white,
-      // ⚠️ WCAG AA 대비 경고: O[500] (#FF6929) 배경 + white 텍스트 = 2.87:1 (AA 미달, 4.5:1 필요)
+      // ⚠️ WCAG AA 대비 경고: primary[500] (#FF6929) 배경 + white 텍스트 = 2.87:1 (AA 미달, 4.5:1 필요)
       // 디자인 확정으로 인해 현재 색상 유지
-      // 향후 디자이너와 협의하여 O[600] (#E86025, 대비 6.13:1) 또는 다른 색상으로 조정 검토 예정
+      // 향후 디자이너와 협의하여 primary[600] (#E86025, 대비 6.13:1) 또는 다른 색상으로 조정 검토 예정
       selectors: {
         "&:focus-visible": {
-          outline: `2px solid ${colors.O[600]}`,
+          outline: `2px solid ${semanticColors.primary[600]}`,
           outlineOffset: "2px",
         },
         "&:hover:not(:disabled)": {
-          backgroundColor: colors.O[600],
+          backgroundColor: semanticColors.primary[600],
           color: colors.white,
         },
         "&:active:not(:disabled)": {
-          backgroundColor: colors.O[600],
+          backgroundColor: semanticColors.primary[600],
           color: colors.white,
           boxShadow: shadows["btn-pressed"],
         },
