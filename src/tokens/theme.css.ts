@@ -1,7 +1,12 @@
+import { createGlobalTheme } from "@vanilla-extract/css";
 import { colors } from "./colors";
+import { themeContract } from "./css-variables.css";
 
-export const semanticColors = {
-  // Primary (Orange)
+/**
+ * 기본 테마 값 할당
+ * :root에 CSS 변수로 기본값이 설정됩니다.
+ */
+export const theme = createGlobalTheme(":root", themeContract, {
   primary: {
     50: colors.O[50],
     100: colors.O[100],
@@ -14,8 +19,6 @@ export const semanticColors = {
     800: colors.O[800],
     900: colors.O[900],
   },
-
-  // Secondary (Green)
   secondary: {
     50: colors.Gre[50],
     100: colors.Gre[100],
@@ -28,8 +31,6 @@ export const semanticColors = {
     800: colors.Gre[800],
     900: colors.Gre[900],
   },
-
-  // Tertiary (Red)
   tertiary: {
     50: colors.R[50],
     100: colors.R[100],
@@ -42,8 +43,6 @@ export const semanticColors = {
     800: colors.R[800],
     900: colors.R[900],
   },
-
-  // Gray (기존 G와 동일)
   gray: {
     50: colors.G[50],
     75: colors.G[75],
@@ -57,4 +56,4 @@ export const semanticColors = {
     800: colors.G[800],
     900: colors.G[900],
   },
-} as const;
+});
