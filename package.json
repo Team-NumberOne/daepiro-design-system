@@ -50,6 +50,7 @@
     "clean": "rm -rf dist"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@playwright/test": "^1.57.0",
     "@storybook/addon-a11y": "^10.1.10",
     "@storybook/addon-docs": "^10.1.6",
