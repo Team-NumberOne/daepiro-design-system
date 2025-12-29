@@ -2,9 +2,9 @@ import type { ButtonHTMLAttributes, ReactNode } from "react";
 import {
   buttonVariants,
   fullWidth,
+  iconSpacer,
   leftIcon,
   rightIcon,
-  iconSpacer,
 } from "./Button.css";
 
 export type ButtonVariant = "default" | "gray" | "primary";

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "./Button";
 import { Icon } from "@/icons";
 import { colors } from "@/tokens/colors";
+import { Button } from "./Button";
 
 const meta = {
   title: "Components/Button",
@@ -215,8 +215,8 @@ export const AllStates: Story = {
                           row.variant === "default"
                             ? colors.G[75]
                             : row.variant === "gray"
-                            ? colors.G[600]
-                            : colors.O[600],
+                              ? colors.G[600]
+                              : colors.O[600],
                         color:
                           row.variant === "default"
                             ? colors.G[600]

@@ -1,8 +1,8 @@
 /* eslint-disable */
 // ⚠️ 이 파일은 scripts/generate-icons-index.cjs 에 의해 자동 생성됩니다.
 //    직접 수정하지 말고, 아이콘 SVG를 수정/추가한 후 "pnpm icons"를 다시 실행하세요.
-import type { SVGProps } from 'react';
-import * as GeneratedIcons from './generated/index';
+import type { SVGProps } from "react";
+import * as GeneratedIcons from "./generated/index";
 
 const RawIcons = {
   ArrowDown: GeneratedIcons.ArrowDown,
@@ -37,10 +37,9 @@ const RawIcons = {
   Weather: GeneratedIcons.Weather,
 } as const;
 
-
 export type IconName = keyof typeof RawIcons;
 
-export type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type IconSize = "xs" | "sm" | "md" | "lg" | "xl";
 
 export const iconSize: Record<IconSize, number> = {
   xs: 12,
@@ -54,25 +53,24 @@ export type IconBaseProps = {
   size?: IconSize | number;
   color?: string;
   decorative?: boolean;
-  'aria-label'?: string;
-} & Omit<SVGProps<SVGSVGElement>, 'color'>;
+  "aria-label"?: string;
+} & Omit<SVGProps<SVGSVGElement>, "color">;
 
 function IconBase({
   name,
-  size = 'md',
+  size = "md",
   color,
   decorative = true,
-  'aria-label': ariaLabel,
+  "aria-label": ariaLabel,
   style,
   ...rest
 }: { name: IconName | string } & IconBaseProps) {
   const Component = RawIcons[name as IconName];
-  const pixelSize =
-    typeof size === 'number' ? size : iconSize[size];
+  const pixelSize = typeof size === "number" ? size : iconSize[size];
 
   const accessibilityProps = decorative
-    ? { 'aria-hidden': true }
-    : { role: 'img', 'aria-label': ariaLabel };
+    ? { "aria-hidden": true }
+    : { role: "img", "aria-label": ariaLabel };
 
   return (
     <Component
@@ -184,6 +182,5 @@ export const Icons = {
     <IconBase name={"Weather" as IconName} {...props} />
   ),
 } as const;
-
 
 export const Icon = Object.assign(IconBase, Icons);

@@ -1,6 +1,6 @@
-import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { describe, expect, it, vi } from "vitest";
 import { Button } from "./Button";
 
 describe("Button", () => {
@@ -136,7 +136,7 @@ describe("Button", () => {
 
       const button = container.querySelector("button");
       const leftIconElement = screen.getByTestId("left-icon");
-      const iconSpacer = container.querySelector("span.iconSpacer");
+      const _iconSpacer = container.querySelector("span.iconSpacer");
 
       expect(leftIconElement).toBeInTheDocument();
       expect(leftIconElement.closest("button")).toBe(button);
@@ -162,7 +162,7 @@ describe("Button", () => {
 
     it("leftIcon과 rightIcon이 동시에 있을 때 leftIcon이 우선 적용되는지", () => {
       // Button 컴포넌트 로직상 leftIcon이 있으면 rightIcon은 무시됨
-      const { container } = render(
+      render(
         <Button
           leftIcon={<span data-testid="left-icon">←</span>}
           rightIcon={<span data-testid="right-icon">→</span>}

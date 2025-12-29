@@ -1,5 +1,5 @@
-import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 import { Icon, Icons, iconSize } from "./index";
 
 describe("Icon", () => {
@@ -22,7 +22,7 @@ describe("Icon", () => {
   });
 
   describe("동적 아이콘 렌더링", () => {
-    it("<Icon name=\"ArrowDown\" />가 정상적으로 렌더링되는지", () => {
+    it('<Icon name="ArrowDown" />가 정상적으로 렌더링되는지', () => {
       const { container } = render(<Icon name="ArrowDown" />);
       const svg = container.querySelector("svg");
       expect(svg).toBeInTheDocument();
@@ -40,44 +40,59 @@ describe("Icon", () => {
   });
 
   describe("size 토큰 적용", () => {
-    it("size=\"xs\"일 때 width/height가 12px로 설정되는지", () => {
+    it('size="xs"일 때 width/height가 12px로 설정되는지', () => {
       const { container } = render(<Icon name="ArrowDown" size="xs" />);
       const svg = container.querySelector("svg");
       expect(svg).toHaveAttribute("width", `${iconSize.xs}px`);
       expect(svg).toHaveAttribute("height", `${iconSize.xs}px`);
-      expect(svg).toHaveStyle({ width: `${iconSize.xs}px`, height: `${iconSize.xs}px` });
+      expect(svg).toHaveStyle({
+        width: `${iconSize.xs}px`,
+        height: `${iconSize.xs}px`,
+      });
     });
 
-    it("size=\"sm\"일 때 width/height가 16px로 설정되는지", () => {
+    it('size="sm"일 때 width/height가 16px로 설정되는지', () => {
       const { container } = render(<Icon name="ArrowDown" size="sm" />);
       const svg = container.querySelector("svg");
       expect(svg).toHaveAttribute("width", `${iconSize.sm}px`);
       expect(svg).toHaveAttribute("height", `${iconSize.sm}px`);
-      expect(svg).toHaveStyle({ width: `${iconSize.sm}px`, height: `${iconSize.sm}px` });
+      expect(svg).toHaveStyle({
+        width: `${iconSize.sm}px`,
+        height: `${iconSize.sm}px`,
+      });
     });
 
-    it("size=\"md\"일 때 width/height가 24px로 설정되는지 (기본값)", () => {
+    it('size="md"일 때 width/height가 24px로 설정되는지 (기본값)', () => {
       const { container } = render(<Icon name="ArrowDown" />);
       const svg = container.querySelector("svg");
       expect(svg).toHaveAttribute("width", `${iconSize.md}px`);
       expect(svg).toHaveAttribute("height", `${iconSize.md}px`);
-      expect(svg).toHaveStyle({ width: `${iconSize.md}px`, height: `${iconSize.md}px` });
+      expect(svg).toHaveStyle({
+        width: `${iconSize.md}px`,
+        height: `${iconSize.md}px`,
+      });
     });
 
-    it("size=\"lg\"일 때 width/height가 32px로 설정되는지", () => {
+    it('size="lg"일 때 width/height가 32px로 설정되는지', () => {
       const { container } = render(<Icon name="ArrowDown" size="lg" />);
       const svg = container.querySelector("svg");
       expect(svg).toHaveAttribute("width", `${iconSize.lg}px`);
       expect(svg).toHaveAttribute("height", `${iconSize.lg}px`);
-      expect(svg).toHaveStyle({ width: `${iconSize.lg}px`, height: `${iconSize.lg}px` });
+      expect(svg).toHaveStyle({
+        width: `${iconSize.lg}px`,
+        height: `${iconSize.lg}px`,
+      });
     });
 
-    it("size=\"xl\"일 때 width/height가 48px로 설정되는지", () => {
+    it('size="xl"일 때 width/height가 48px로 설정되는지', () => {
       const { container } = render(<Icon name="ArrowDown" size="xl" />);
       const svg = container.querySelector("svg");
       expect(svg).toHaveAttribute("width", `${iconSize.xl}px`);
       expect(svg).toHaveAttribute("height", `${iconSize.xl}px`);
-      expect(svg).toHaveStyle({ width: `${iconSize.xl}px`, height: `${iconSize.xl}px` });
+      expect(svg).toHaveStyle({
+        width: `${iconSize.xl}px`,
+        height: `${iconSize.xl}px`,
+      });
     });
 
     it("size를 숫자로 직접 지정할 수 있는지", () => {
@@ -86,12 +101,15 @@ describe("Icon", () => {
       const svg = container.querySelector("svg");
       expect(svg).toHaveAttribute("width", `${customSize}px`);
       expect(svg).toHaveAttribute("height", `${customSize}px`);
-      expect(svg).toHaveStyle({ width: `${customSize}px`, height: `${customSize}px` });
+      expect(svg).toHaveStyle({
+        width: `${customSize}px`,
+        height: `${customSize}px`,
+      });
     });
   });
 
   describe("접근성 속성", () => {
-    it("decorative가 true일 때 (기본값) aria-hidden=\"true\"가 설정되는지", () => {
+    it('decorative가 true일 때 (기본값) aria-hidden="true"가 설정되는지', () => {
       const { container } = render(<Icon name="ArrowDown" />);
       const svg = container.querySelector("svg");
       expect(svg).toHaveAttribute("aria-hidden", "true");
@@ -99,7 +117,7 @@ describe("Icon", () => {
       expect(svg).not.toHaveAttribute("aria-label");
     });
 
-    it("decorative={true}를 명시적으로 지정했을 때 aria-hidden=\"true\"가 설정되는지", () => {
+    it('decorative={true}를 명시적으로 지정했을 때 aria-hidden="true"가 설정되는지', () => {
       const { container } = render(<Icon name="ArrowDown" decorative={true} />);
       const svg = container.querySelector("svg");
       expect(svg).toHaveAttribute("aria-hidden", "true");
@@ -107,14 +125,16 @@ describe("Icon", () => {
       expect(svg).not.toHaveAttribute("aria-label");
     });
 
-    it("decorative={false}일 때 role=\"img\"가 설정되는지", () => {
-      const { container } = render(<Icon name="ArrowDown" decorative={false} />);
+    it('decorative={false}일 때 role="img"가 설정되는지', () => {
+      const { container } = render(
+        <Icon name="ArrowDown" decorative={false} />
+      );
       const svg = container.querySelector("svg");
       expect(svg).toHaveAttribute("role", "img");
       expect(svg).not.toHaveAttribute("aria-hidden");
     });
 
-    it("decorative={false} + aria-label을 지정했을 때 role=\"img\"와 aria-label이 모두 적용되는지", () => {
+    it('decorative={false} + aria-label을 지정했을 때 role="img"와 aria-label이 모두 적용되는지', () => {
       const ariaLabel = "화살표 아래 아이콘";
       const { container } = render(
         <Icon name="ArrowDown" decorative={false} aria-label={ariaLabel} />
@@ -136,4 +156,3 @@ describe("Icon", () => {
     });
   });
 });
-

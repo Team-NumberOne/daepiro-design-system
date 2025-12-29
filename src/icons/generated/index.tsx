@@ -1,5 +1,3 @@
-export { default as Delete } from "./Delete";
-export { default as Eye } from "./Eye";
 export { default as ArrowDown } from "./ArrowDown";
 export { default as ArrowLeft } from "./ArrowLeft";
 export { default as ArrowRight } from "./ArrowRight";
@@ -9,7 +7,9 @@ export { default as CheckBoxDisabled } from "./CheckBoxDisabled";
 export { default as CheckBoxEnabled } from "./CheckBoxEnabled";
 export { default as Close } from "./Close";
 export { default as Copy } from "./Copy";
+export { default as Delete } from "./Delete";
 export { default as DisasterInfo } from "./DisasterInfo";
+export { default as Eye } from "./Eye";
 export { default as Filter } from "./Filter";
 export { default as Good } from "./Good";
 export { default as HambugerBar } from "./HambugerBar";

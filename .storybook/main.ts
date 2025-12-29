@@ -1,8 +1,9 @@
 // This file has been automatically migrated to valid ESM format by Storybook.
+
+import path, { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { StorybookConfig } from "@storybook/react-vite";
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
-import path, { dirname } from "path";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -18,7 +19,7 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
-  viteFinal: async (config, { configType }) => {
+  viteFinal: async (config) => {
     config.plugins = config.plugins || [];
     config.plugins.push(vanillaExtractPlugin());
 

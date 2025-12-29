@@ -51,7 +51,13 @@ export function App() {
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <header style={{ marginBottom: "48px", textAlign: "center" }}>
-          <h1 style={{ ...typography.h3, color: colors.G[900], marginBottom: "8px" }}>
+          <h1
+            style={{
+              ...typography.h3,
+              color: colors.G[900],
+              marginBottom: "8px",
+            }}
+          >
             Design System Playground
           </h1>
           <p style={{ ...typography["body-2"], color: colors.G[600] }}>
@@ -61,7 +67,9 @@ export function App() {
 
         {/* Buttons Section */}
         <Section title="Buttons">
-          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "24px" }}
+          >
             <div>
               <h3
                 style={{
@@ -142,7 +150,9 @@ export function App() {
 
         {/* Icons Section */}
         <Section title="Icons">
-          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "24px" }}
+          >
             <div>
               <h3
                 style={{
@@ -200,7 +210,9 @@ export function App() {
               >
                 Sizes
               </h3>
-              <div style={{ display: "flex", gap: "24px", alignItems: "center" }}>
+              <div
+                style={{ display: "flex", gap: "24px", alignItems: "center" }}
+              >
                 {(["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
                   <div
                     key={size}
@@ -212,7 +224,9 @@ export function App() {
                     }}
                   >
                     <Icon name="ArrowRight" size={size} />
-                    <span style={{ ...typography.caption, color: colors.G[600] }}>
+                    <span
+                      style={{ ...typography.caption, color: colors.G[600] }}
+                    >
                       {size} ({iconSize[size]}px)
                     </span>
                   </div>
@@ -230,7 +244,9 @@ export function App() {
               >
                 Colors
               </h3>
-              <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+              <div
+                style={{ display: "flex", gap: "16px", alignItems: "center" }}
+              >
                 <Icon name="Warning" size="md" />
                 <Icon name="Warning" size="md" color={colors.O[500]} />
                 <Icon name="Warning" size="md" color={colors.R[500]} />
@@ -242,7 +258,9 @@ export function App() {
 
         {/* Typography Section */}
         <Section title="Typography">
-          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "24px" }}
+          >
             {typographyKeys.map((key) => {
               const style = typography[key];
               return (
@@ -283,7 +301,9 @@ export function App() {
 
         {/* Colors Section */}
         <Section title="Colors">
-          <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "32px" }}
+          >
             {[
               { name: "Gray", palette: colors.G },
               { name: "Orange", palette: colors.O },
@@ -303,7 +323,8 @@ export function App() {
                 <div
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
+                    gridTemplateColumns:
+                      "repeat(auto-fill, minmax(100px, 1fr))",
                     gap: "8px",
                   }}
                 >

@@ -1,5 +1,5 @@
 import type { TestRunnerConfig } from "@storybook/test-runner";
-import { injectAxe, getViolations } from "axe-playwright";
+import { getViolations, injectAxe } from "axe-playwright";
 
 const config: TestRunnerConfig = {
   // Hook that is executed before the test runner starts running tests

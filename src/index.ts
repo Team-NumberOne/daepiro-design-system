@@ -6,5 +6,5 @@ export * from "./icons";
 
 // Tokens
 export * from "./tokens/colors";
-export * from "./tokens/typography";
 export * from "./tokens/shadows";
+export * from "./tokens/typography";

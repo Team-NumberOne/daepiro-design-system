@@ -1,5 +1,5 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 
 const ROOT_DIR = path.join(__dirname, "..");
 const GENERATED_DIR = path.join(ROOT_DIR, "src/icons/generated");
