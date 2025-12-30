@@ -1,5 +1,4 @@
 import type { SVGProps } from "react";
-
 const SvgShare = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={24}

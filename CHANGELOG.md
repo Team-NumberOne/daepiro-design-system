@@ -7,6 +7,16 @@
 
 ## [Unreleased]
 
+## [0.1.4] - 2025-12-30
+
+### Changed
+
+- 아이콘 색상 시스템 개선
+  - 모든 아이콘이 `currentColor`를 사용하도록 변경
+  - Logo, NeighborhoodVerification 아이콘의 하드코딩된 색상 제거
+  - `svgr.config.cjs`에 `#FF6929`, `#FF8754`를 `currentColor`로 자동 변환하도록 추가
+  - 사용처에서 `color` prop으로 아이콘 색상 자유롭게 변경 가능
+
 ### Added
 
 - CSS 변수 기반 테마 시스템 도입
@@ -101,7 +111,8 @@
 - Storybook 설정
 - Vitest 테스트 설정
 
-[Unreleased]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.1.3...HEAD
+[Unreleased]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.1.4...HEAD
+[0.1.4]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/Team-NumberOne/daepiro-design-system/releases/tag/v0.1.1

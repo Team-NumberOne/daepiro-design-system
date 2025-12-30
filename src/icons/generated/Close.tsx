@@ -1,5 +1,4 @@
 import type { SVGProps } from "react";
-
 const SvgClose = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={24}
