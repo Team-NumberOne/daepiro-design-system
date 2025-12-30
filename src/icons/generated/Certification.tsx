@@ -1,5 +1,4 @@
 import type { SVGProps } from "react";
-
 const SvgCertification = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={24}

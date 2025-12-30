@@ -1,5 +1,4 @@
 import type { SVGProps } from "react";
-
 const SvgNeighborhoodVerification = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={24}
@@ -12,7 +11,7 @@ const SvgNeighborhoodVerification = (props: SVGProps<SVGSVGElement>) => (
       fillRule="evenodd"
       clipRule="evenodd"
       d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM9.44479 8.42681V15.5944L12.5785 14.9259V9.07296L9.44479 8.42681ZM16 7V17H8V7H16Z"
-      fill="#FF8754"
+      fill="currentColor"
     />
   </svg>
 );

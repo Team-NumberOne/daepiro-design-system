@@ -1,5 +1,4 @@
 import type { SVGProps } from "react";
-
 const SvgArrowRight = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={24}

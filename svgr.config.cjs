@@ -16,5 +16,7 @@ module.exports = {
   },
   replaceAttrValues: {
     "#222530": "currentColor",
+    "#FF6929": "currentColor",
+    "#FF8754": "currentColor",
   },
 };
