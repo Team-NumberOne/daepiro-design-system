@@ -7,6 +7,15 @@
 
 ## [Unreleased]
 
+## [0.1.5] - 2025-12-30
+
+### Added
+
+- Typography 토큰을 CSS 변수로 노출
+  - 각 typography 스타일(h1-h6, subtitle-1/2, body-1/2, caption, overline)의 fontSize, fontWeight, lineHeight, letterSpacing을 CSS 변수로 노출
+  - 사용처에서 Tailwind CSS를 통해 `text-caption`, `text-h1` 등의 클래스를 바로 사용 가능
+  - CSS 변수를 통해 런타임에 typography 스타일 커스터마이징 가능
+
 ## [0.1.4] - 2025-12-30
 
 ### Changed

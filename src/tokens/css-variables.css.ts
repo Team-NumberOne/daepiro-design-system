@@ -54,4 +54,81 @@ export const themeContract = createGlobalThemeContract({
     800: "color-gray-800",
     900: "color-gray-900",
   },
+  fontFamily: {
+    sans: "font-family-sans",
+  },
+  typography: {
+    h1: {
+      fontSize: "typography-h1-font-size",
+      fontWeight: "typography-h1-font-weight",
+      lineHeight: "typography-h1-line-height",
+      letterSpacing: "typography-h1-letter-spacing",
+    },
+    h2: {
+      fontSize: "typography-h2-font-size",
+      fontWeight: "typography-h2-font-weight",
+      lineHeight: "typography-h2-line-height",
+      letterSpacing: "typography-h2-letter-spacing",
+    },
+    h3: {
+      fontSize: "typography-h3-font-size",
+      fontWeight: "typography-h3-font-weight",
+      lineHeight: "typography-h3-line-height",
+      letterSpacing: "typography-h3-letter-spacing",
+    },
+    h4: {
+      fontSize: "typography-h4-font-size",
+      fontWeight: "typography-h4-font-weight",
+      lineHeight: "typography-h4-line-height",
+      letterSpacing: "typography-h4-letter-spacing",
+    },
+    h5: {
+      fontSize: "typography-h5-font-size",
+      fontWeight: "typography-h5-font-weight",
+      lineHeight: "typography-h5-line-height",
+      letterSpacing: "typography-h5-letter-spacing",
+    },
+    h6: {
+      fontSize: "typography-h6-font-size",
+      fontWeight: "typography-h6-font-weight",
+      lineHeight: "typography-h6-line-height",
+      letterSpacing: "typography-h6-letter-spacing",
+    },
+    "subtitle-1": {
+      fontSize: "typography-subtitle-1-font-size",
+      fontWeight: "typography-subtitle-1-font-weight",
+      lineHeight: "typography-subtitle-1-line-height",
+      letterSpacing: "typography-subtitle-1-letter-spacing",
+    },
+    "body-1": {
+      fontSize: "typography-body-1-font-size",
+      fontWeight: "typography-body-1-font-weight",
+      lineHeight: "typography-body-1-line-height",
+      letterSpacing: "typography-body-1-letter-spacing",
+    },
+    "subtitle-2": {
+      fontSize: "typography-subtitle-2-font-size",
+      fontWeight: "typography-subtitle-2-font-weight",
+      lineHeight: "typography-subtitle-2-line-height",
+      letterSpacing: "typography-subtitle-2-letter-spacing",
+    },
+    "body-2": {
+      fontSize: "typography-body-2-font-size",
+      fontWeight: "typography-body-2-font-weight",
+      lineHeight: "typography-body-2-line-height",
+      letterSpacing: "typography-body-2-letter-spacing",
+    },
+    caption: {
+      fontSize: "typography-caption-font-size",
+      fontWeight: "typography-caption-font-weight",
+      lineHeight: "typography-caption-line-height",
+      letterSpacing: "typography-caption-letter-spacing",
+    },
+    overline: {
+      fontSize: "typography-overline-font-size",
+      fontWeight: "typography-overline-font-weight",
+      lineHeight: "typography-overline-line-height",
+      letterSpacing: "typography-overline-letter-spacing",
+    },
+  },
 });
