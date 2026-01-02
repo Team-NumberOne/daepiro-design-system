@@ -1,7 +1,7 @@
 import { createGlobalTheme } from "@vanilla-extract/css";
 import { colors } from "./colors";
-import { typography } from "./typography";
 import { themeContract } from "./css-variables.css";
+import { typography } from "./typography";
 
 /**
  * 기본 테마 값 할당
