@@ -103,7 +103,7 @@ export interface ModalOverlayProps extends HTMLAttributes<HTMLDivElement> {}
 /**
  * Modal Overlay 컴포넌트
  */
-function ModalOverlay({ className, ...rest }: ModalOverlayProps) {
+function ModalOverlay({ className, children, ...rest }: ModalOverlayProps) {
   const { api, classNames } = useModalContext();
 
   return (
@@ -111,7 +111,9 @@ function ModalOverlay({ className, ...rest }: ModalOverlayProps) {
       {...api.overlayProps}
       className={[classNames.overlay, className].filter(Boolean).join(" ")}
       {...rest}
-    />
+    >
+      {children}
+    </div>
   );
 }
 
