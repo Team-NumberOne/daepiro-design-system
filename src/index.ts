@@ -1,8 +1,9 @@
 // Theme (CSS 변수 생성 - 먼저 import해야 함)
 import "./tokens/theme.css";
 
-// Components
+// Components (Pre-composed - 일관성)
 export * from "./components/button/Button";
+export * from "./components/modal/Modal";
 
 // Icons
 export * from "./icons";
