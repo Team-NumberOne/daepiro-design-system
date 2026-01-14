@@ -4,7 +4,8 @@ import { shadows } from "@/tokens/shadows";
 import { typography } from "@/tokens/typography";
 import { style, styleVariants } from "@vanilla-extract/css";
 
-const baseButton = style({
+// Base styles
+export const baseButton = style({
   ...typography["subtitle-1"],
   borderRadius: "8px",
   border: "none",
@@ -30,6 +31,7 @@ const baseButton = style({
   },
 });
 
+// Variant styles
 export const buttonVariants = styleVariants({
   default: [
     baseButton,
@@ -102,10 +104,12 @@ export const buttonVariants = styleVariants({
   ],
 });
 
+// Full width style
 export const fullWidth = style({
   width: "100%",
 });
 
+// Icon styles
 export const leftIcon = style({
   display: "inline-flex",
   flexShrink: 0,

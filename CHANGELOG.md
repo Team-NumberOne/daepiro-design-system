@@ -7,6 +7,33 @@
 
 ## [Unreleased]
 
+## [0.1.6] - 2025-01-14
+
+### Added
+
+- Modal 컴포넌트에 `actionButton` prop 추가
+  - 프라이머리 버튼을 모달 하단에 표시
+  - `label`과 `onClick` 속성 지원
+  - `WithActionButton` 스토리 추가
+
+### Changed
+
+- Button 컴포넌트 구조 개선
+  - `Button.css.ts` 파일 제거
+  - Recipe 패턴으로 마이그레이션 (`button.recipe.ts`, `button.recipe.css.ts`)
+
+### Removed
+
+- ModalHeader의 `align` prop 제거
+  - `ModalHeaderAlign` 타입 제거
+  - `headerAlignLeft`, `headerAlignCenter`, `headerAlignRight` 스타일 제거
+  - 관련 스토리 제거 (`CompoundWithCenteredHeader`, `CompoundWithRightAlignedHeader`)
+
+### Fixed
+
+- Button 컴포넌트의 `type` prop이 올바르게 전달되도록 수정
+  - `type="submit"` 등 명시적 type prop이 정상 작동
+
 ## [0.1.5] - 2025-12-30
 
 ### Added

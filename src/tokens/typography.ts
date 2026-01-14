@@ -86,6 +86,13 @@ export const typography = {
     lineHeight: "24px",
     letterSpacing: 0.15,
   },
+  "body-1-b": {
+    fontFamily: FONT_FAMILY,
+    fontWeight: FONT_WEIGHT.BOLD,
+    fontSize: FONT_SIZE.BODY_1,
+    lineHeight: "24px",
+    letterSpacing: 0.15,
+  },
   "subtitle-2": {
     fontFamily: FONT_FAMILY,
     fontWeight: FONT_WEIGHT.BOLD,

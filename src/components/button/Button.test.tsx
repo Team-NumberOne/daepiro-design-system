@@ -64,6 +64,84 @@ describe("Button", () => {
     });
   });
 
+  describe("기타 이벤트 핸들러", () => {
+    it("onFocus가 정상적으로 호출되는지", async () => {
+      const handleFocus = vi.fn();
+      const user = userEvent.setup();
+      render(<Button onFocus={handleFocus}>포커스</Button>);
+
+      const button = screen.getByRole("button");
+      await user.tab();
+      button.focus();
+
+      expect(handleFocus).toHaveBeenCalledTimes(1);
+    });
+
+    it("disabled일 때 onFocus가 호출되지 않는지", async () => {
+      const handleFocus = vi.fn();
+      render(
+        <Button onFocus={handleFocus} disabled>
+          비활성화
+        </Button>
+      );
+
+      const button = screen.getByRole("button");
+      button.focus();
+
+      expect(handleFocus).not.toHaveBeenCalled();
+    });
+
+    it("onBlur가 정상적으로 호출되는지", async () => {
+      const handleBlur = vi.fn();
+      const user = userEvent.setup();
+      render(<Button onBlur={handleBlur}>블러</Button>);
+
+      const button = screen.getByRole("button");
+      button.focus();
+      button.blur();
+
+      expect(handleBlur).toHaveBeenCalledTimes(1);
+    });
+
+    it("onMouseEnter가 정상적으로 호출되는지", async () => {
+      const handleMouseEnter = vi.fn();
+      const user = userEvent.setup();
+      render(<Button onMouseEnter={handleMouseEnter}>마우스</Button>);
+
+      const button = screen.getByRole("button");
+      await user.hover(button);
+
+      expect(handleMouseEnter).toHaveBeenCalledTimes(1);
+    });
+
+    it("disabled일 때 onMouseEnter가 호출되지 않는지", async () => {
+      const handleMouseEnter = vi.fn();
+      const user = userEvent.setup();
+      render(
+        <Button onMouseEnter={handleMouseEnter} disabled>
+          비활성화
+        </Button>
+      );
+
+      const button = screen.getByRole("button");
+      await user.hover(button);
+
+      expect(handleMouseEnter).not.toHaveBeenCalled();
+    });
+
+    it("onMouseLeave가 정상적으로 호출되는지", async () => {
+      const handleMouseLeave = vi.fn();
+      const user = userEvent.setup();
+      render(<Button onMouseLeave={handleMouseLeave}>마우스</Button>);
+
+      const button = screen.getByRole("button");
+      await user.hover(button);
+      await user.unhover(button);
+
+      expect(handleMouseLeave).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe("variant에 따른 스타일", () => {
     it("default variant가 적용되는지", () => {
       const { container } = render(<Button variant="default">기본</Button>);
