@@ -7,6 +7,8 @@
 
 ## [Unreleased]
 
+## [0.1.5] - 2025-01-14
+
 ### Added
 
 - Modal 컴포넌트에 `actionButton` prop 추가
