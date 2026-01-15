@@ -297,7 +297,7 @@ pnpm test:coverage
 ## 🔗 링크
 
 - [GitHub 저장소](https://github.com/Team-NumberOne/daepiro-design-system)
-- [Storybook](https://team-numberone.github.io/daepiro-design-system/)
+- [Storybook](https://choihooo.github.io/DDS-storybook/)
 
 ## 📞 문의
 
