@@ -1,6 +1,6 @@
 import type { Preview } from "@storybook/react";
-// 테마 CSS 변수 로드
-import "../src/tokens/theme.css";
+// Tailwind CSS (v4)
+import "../src/styles/tailwind.css";
 
 const preview: Preview = {
   parameters: {

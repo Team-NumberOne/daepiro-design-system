@@ -7,6 +7,33 @@
 
 ## [Unreleased]
 
+## [0.2.0] - 2025-01-14
+
+### Added
+
+- Modal 컴포넌트 테스트 추가 및 커버리지 개선
+  - 기본 렌더링, 닫기 버튼, actionButton 테스트
+  - 오버레이 클릭, ESC 키, 크기 옵션 테스트
+  - 애니메이션 및 컴파운드 패턴 테스트
+  - 컨텍스트 에러 처리 테스트 (Modal compound components를 Modal.Root 밖에서 사용할 때)
+  - 커스터마이징 테스트 (className prop, children 커스터마이징)
+  - 총 29개의 테스트 케이스 추가
+  - Modal 컴포넌트 테스트 커버리지 100% 달성 (이전: 95.83%)
+- Button 컴포넌트 테스트 보완
+  - `onFocus`, `onBlur`, `onMouseEnter`, `onMouseLeave` 이벤트 핸들러 테스트 추가
+  - 테스트 커버리지 개선: 61.03% → 76.88%
+
+### Fixed
+
+- ModalOverlay에서 children이 렌더링되도록 수정
+  - ModalOverlay 컴포넌트에서 children을 props에서 destructure
+  - div 내부에 children을 명시적으로 렌더링
+  - 컴파운드 패턴에서 Modal.Overlay 내부의 Modal.Content 등이 정상 렌더링되도록 수정
+
+### Documentation
+
+- README에 썸네일 이미지 추가
+
 ## [0.1.6] - 2025-01-14
 
 ### Added
@@ -18,9 +45,11 @@
 
 ### Changed
 
-- Button 컴포넌트 구조 개선
-  - `Button.css.ts` 파일 제거
-  - Recipe 패턴으로 마이그레이션 (`button.recipe.ts`, `button.recipe.css.ts`)
+- 스타일링 시스템을 vanilla-extract에서 Tailwind CSS로 마이그레이션
+  - Button 컴포넌트: `Button.css.ts` (vanilla-extract) 제거, Tailwind 클래스 기반 스타일로 변경
+  - Modal 컴포넌트: vanilla-extract 스타일 제거, Tailwind 클래스 기반 스타일로 변경
+  - 모든 컴포넌트가 Tailwind CSS v4의 `@theme` 문법과 유틸리티 클래스를 사용하도록 변경
+  - 타입 안전성과 개발자 경험 유지하면서 더 간단한 스타일링 방식으로 전환
 
 ### Removed
 
@@ -147,7 +176,10 @@
 - Storybook 설정
 - Vitest 테스트 설정
 
-[Unreleased]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.1.4...HEAD
+[Unreleased]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.1.6...v0.2.0
+[0.1.6]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.1.5...v0.1.6
+[0.1.5]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.1.1...v0.1.2

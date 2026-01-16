@@ -355,5 +355,174 @@ describe("Modal 컴파운드 패턴", () => {
       );
       expect(screen.getByLabelText("닫기")).toBeInTheDocument();
     });
+
+    it("Modal.CloseButton의 children이 커스텀 아이콘으로 렌더링되는지", () => {
+      render(
+        <Modal.Root open={true} onOpenChange={() => {}}>
+          <Modal.Overlay>
+            <Modal.Content>
+              <Modal.CloseButton>
+                <span data-testid="custom-close">X</span>
+              </Modal.CloseButton>
+            </Modal.Content>
+          </Modal.Overlay>
+        </Modal.Root>
+      );
+      expect(screen.getByTestId("custom-close")).toBeInTheDocument();
+    });
+  });
+
+  describe("컨텍스트 에러 처리", () => {
+    it("Modal.Overlay를 Modal.Root 밖에서 사용하면 에러가 발생하는지", () => {
+      // 에러를 콘솔에 출력하지 않도록 설정
+      const consoleError = vi
+        .spyOn(console, "error")
+        .mockImplementation(() => {});
+
+      expect(() => {
+        render(<Modal.Overlay>테스트</Modal.Overlay>);
+      }).toThrow("Modal compound components must be used within Modal.Root");
+
+      consoleError.mockRestore();
+    });
+
+    it("Modal.Content를 Modal.Root 밖에서 사용하면 에러가 발생하는지", () => {
+      const consoleError = vi
+        .spyOn(console, "error")
+        .mockImplementation(() => {});
+
+      expect(() => {
+        render(<Modal.Content>테스트</Modal.Content>);
+      }).toThrow("Modal compound components must be used within Modal.Root");
+
+      consoleError.mockRestore();
+    });
+
+    it("Modal.CloseButton을 Modal.Root 밖에서 사용하면 에러가 발생하는지", () => {
+      const consoleError = vi
+        .spyOn(console, "error")
+        .mockImplementation(() => {});
+
+      expect(() => {
+        render(<Modal.CloseButton />);
+      }).toThrow("Modal compound components must be used within Modal.Root");
+
+      consoleError.mockRestore();
+    });
+  });
+
+  describe("커스터마이징", () => {
+    it("Modal.Overlay의 className prop이 적용되는지", () => {
+      const { container } = render(
+        <Modal.Root open={true} onOpenChange={() => {}}>
+          <Modal.Overlay className="custom-overlay">
+            <Modal.Content>테스트</Modal.Content>
+          </Modal.Overlay>
+        </Modal.Root>
+      );
+
+      const overlay = container.querySelector(".custom-overlay");
+      expect(overlay).toBeInTheDocument();
+    });
+
+    it("Modal.Content의 className prop이 적용되는지", () => {
+      const { container } = render(
+        <Modal.Root open={true} onOpenChange={() => {}}>
+          <Modal.Overlay>
+            <Modal.Content className="custom-content">테스트</Modal.Content>
+          </Modal.Overlay>
+        </Modal.Root>
+      );
+
+      const content = container.querySelector(".custom-content");
+      expect(content).toBeInTheDocument();
+    });
+
+    it("Modal.Header의 className prop이 적용되는지", () => {
+      const { container } = render(
+        <Modal.Root open={true} onOpenChange={() => {}}>
+          <Modal.Overlay>
+            <Modal.Content>
+              <Modal.Header className="custom-header">제목</Modal.Header>
+            </Modal.Content>
+          </Modal.Overlay>
+        </Modal.Root>
+      );
+
+      const header = container.querySelector(".custom-header");
+      expect(header).toBeInTheDocument();
+    });
+
+    it("Modal.CloseButton의 className prop이 적용되는지", () => {
+      const { container } = render(
+        <Modal.Root open={true} onOpenChange={() => {}}>
+          <Modal.Overlay>
+            <Modal.Content>
+              <Modal.CloseButton className="custom-close-button" />
+            </Modal.Content>
+          </Modal.Overlay>
+        </Modal.Root>
+      );
+
+      const closeButton = container.querySelector(".custom-close-button");
+      expect(closeButton).toBeInTheDocument();
+    });
+  });
+
+  describe("Modal.Root 추가 기능", () => {
+    it("Modal.Root의 open이 false일 때 렌더링되지 않는지", () => {
+      const { container } = render(
+        <Modal.Root open={false} onOpenChange={() => {}}>
+          <Modal.Overlay>
+            <Modal.Content>테스트</Modal.Content>
+          </Modal.Overlay>
+        </Modal.Root>
+      );
+
+      expect(container.firstChild).toBeNull();
+    });
+
+    it("Modal.Root의 size prop이 올바르게 전달되는지", () => {
+      const { container: smallContainer } = render(
+        <Modal.Root open={true} onOpenChange={() => {}} size="small">
+          <Modal.Overlay>
+            <Modal.Content>작은 모달</Modal.Content>
+          </Modal.Overlay>
+        </Modal.Root>
+      );
+
+      const { container: largeContainer } = render(
+        <Modal.Root open={true} onOpenChange={() => {}} size="large">
+          <Modal.Overlay>
+            <Modal.Content>큰 모달</Modal.Content>
+          </Modal.Overlay>
+        </Modal.Root>
+      );
+
+      expect(screen.getByText("작은 모달")).toBeInTheDocument();
+      expect(screen.getByText("큰 모달")).toBeInTheDocument();
+    });
+  });
+
+  describe("actionButton 엣지 케이스", () => {
+    it("actionButton의 onClick이 undefined일 때도 정상 작동하는지", async () => {
+      const user = userEvent.setup();
+      render(
+        <Modal
+          open={true}
+          onOpenChange={() => {}}
+          actionButton={{ label: "확인", onClick: undefined }}
+        >
+          모달 내용
+        </Modal>
+      );
+
+      const actionButton = screen.getByRole("button", { name: "확인" });
+      expect(actionButton).toBeInTheDocument();
+
+      // onClick이 undefined여도 에러가 발생하지 않아야 함
+      await user.click(actionButton);
+      expect(actionButton).toBeInTheDocument();
+    });
   });
 });

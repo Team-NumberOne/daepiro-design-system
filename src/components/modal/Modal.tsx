@@ -1,19 +1,29 @@
+"use client";
+
 import { Button } from "@/components/button/Button";
 import { useModal } from "@/hooks/modal/useModal";
 import { Icons } from "@/icons";
-import {
-  type ModalRecipeProps,
-  modal,
-  modalHeader,
-} from "@/recipes/modal/modal.recipe";
+import { cn } from "@/utils/cn";
 import React, { createContext, useContext } from "react";
 import type { HTMLAttributes, ReactNode } from "react";
+import {
+  type ModalSize,
+  closeButtonStyles,
+  contentBaseStyles,
+  contentSizeStyles,
+  headerStyles,
+  overlayStyles,
+} from "./Modal.styles";
 
-export type { ModalRecipeProps } from "@/recipes/modal/modal.recipe";
-export type {
-  ModalSlots,
-  ModalRecipeResult,
-} from "@/recipes/modal/modal.recipe";
+export interface ModalRecipeProps {
+  size?: ModalSize;
+}
+
+export type { ModalSize };
+
+export type ModalSlots = "overlay" | "content" | "closeButton" | "header";
+
+export type ModalRecipeResult = Record<ModalSlots, string>;
 
 /**
  * Modal Context 타입
@@ -21,8 +31,7 @@ export type {
 interface ModalContextValue {
   open: boolean;
   api: ReturnType<typeof useModal>;
-  classNames: ReturnType<typeof modal>;
-  size: "small" | "medium" | "large";
+  size: ModalSize;
 }
 
 /**
@@ -73,9 +82,6 @@ function ModalRoot({
     closeOnEscape,
   });
 
-  // 형태: slot별 className
-  const classNames = modal({ size });
-
   // 모달이 닫혀있고 닫는 중도 아니면 렌더링하지 않음
   if (!open && !api.isClosing) {
     return null;
@@ -84,7 +90,6 @@ function ModalRoot({
   const contextValue: ModalContextValue = {
     open,
     api,
-    classNames,
     size,
   };
 
@@ -104,12 +109,14 @@ export interface ModalOverlayProps extends HTMLAttributes<HTMLDivElement> {}
  * Modal Overlay 컴포넌트
  */
 function ModalOverlay({ className, children, ...rest }: ModalOverlayProps) {
-  const { api, classNames } = useModalContext();
+  const { api, open } = useModalContext();
 
   return (
     <div
       {...api.overlayProps}
-      className={[classNames.overlay, className].filter(Boolean).join(" ")}
+      data-open={open}
+      data-closing={api.isClosing}
+      className={cn(overlayStyles, className)}
       {...rest}
     >
       {children}
@@ -126,12 +133,14 @@ export interface ModalContentProps extends HTMLAttributes<HTMLDivElement> {}
  * Modal Content 컴포넌트
  */
 function ModalContent({ className, children, ...rest }: ModalContentProps) {
-  const { api, classNames } = useModalContext();
+  const { api, open, size } = useModalContext();
 
   return (
     <div
       {...api.contentProps}
-      className={[classNames.content, className].filter(Boolean).join(" ")}
+      data-open={open}
+      data-closing={api.isClosing}
+      className={cn(contentBaseStyles, contentSizeStyles[size], className)}
       {...rest}
     >
       {children}
@@ -153,12 +162,12 @@ function ModalCloseButton({
   children,
   ...rest
 }: ModalCloseButtonProps) {
-  const { api, classNames } = useModalContext();
+  const { api } = useModalContext();
 
   return (
     <button
       {...api.closeButtonProps}
-      className={[classNames.closeButton, className].filter(Boolean).join(" ")}
+      className={cn(closeButtonStyles, className)}
       {...rest}
     >
       {children ?? <Icons.Close size="md" />}
@@ -175,13 +184,8 @@ export interface ModalHeaderProps extends HTMLAttributes<HTMLHeadingElement> {}
  * Modal Header 컴포넌트
  */
 function ModalHeader({ className, children, ...rest }: ModalHeaderProps) {
-  const headerClassName = modalHeader();
-
   return (
-    <h2
-      className={[headerClassName, className].filter(Boolean).join(" ")}
-      {...rest}
-    >
+    <h2 className={cn(headerStyles, className)} {...rest}>
       {children}
     </h2>
   );
