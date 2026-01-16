@@ -3,9 +3,9 @@
 import { cn } from "@/utils/cn";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import {
+  type ButtonVariant,
   baseStyles,
   iconStyles,
-  type ButtonVariant,
   variantStyles,
 } from "./Button.styles";
 

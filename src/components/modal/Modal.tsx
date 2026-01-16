@@ -7,12 +7,12 @@ import { cn } from "@/utils/cn";
 import React, { createContext, useContext } from "react";
 import type { HTMLAttributes, ReactNode } from "react";
 import {
+  type ModalSize,
   closeButtonStyles,
   contentBaseStyles,
   contentSizeStyles,
   headerStyles,
   overlayStyles,
-  type ModalSize,
 } from "./Modal.styles";
 
 export interface ModalRecipeProps {
