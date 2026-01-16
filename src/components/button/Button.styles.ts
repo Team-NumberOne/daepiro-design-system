@@ -14,10 +14,7 @@ export const baseStyles = [
   "disabled:opacity-50 disabled:cursor-not-allowed",
 ] as const;
 
-export const variantStyles: Record<
-  ButtonVariant,
-  readonly string[]
-> = {
+export const variantStyles: Record<ButtonVariant, readonly string[]> = {
   default: [
     "bg-gray-50 text-gray-700",
     "focus-visible:outline-2 focus-visible:outline-gray-700 focus-visible:outline-offset-2",
