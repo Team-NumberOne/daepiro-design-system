@@ -3,7 +3,8 @@
 import path, { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { StorybookConfig } from "@storybook/react-vite";
-import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
+import tailwindcssPostcss from "@tailwindcss/postcss";
+import autoprefixer from "autoprefixer";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -21,7 +22,6 @@ const config: StorybookConfig = {
   },
   viteFinal: async (config) => {
     config.plugins = config.plugins || [];
-    config.plugins.push(vanillaExtractPlugin());
 
     config.resolve = {
       ...config.resolve,
@@ -35,7 +35,7 @@ const config: StorybookConfig = {
     config.css = {
       ...config.css,
       postcss: {
-        plugins: [require("@tailwindcss/postcss"), require("autoprefixer")],
+        plugins: [tailwindcssPostcss(), autoprefixer()],
       },
     };
 
