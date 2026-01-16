@@ -2,7 +2,7 @@
 
 ![Thumbnail](./Thumbnail.png)
 
-React 기반 디자인 시스템 컴포넌트 라이브러리입니다.
+React 기반 디자인 시스템 컴포넌트 라이브러리입니다. Tailwind CSS v4를 사용하여 스타일링됩니다.
 
 ## 📦 설치
 
@@ -171,24 +171,30 @@ shadows.medium;
 shadows.large;
 ```
 
-### CSS 변수 테마
+### Tailwind CSS 테마 커스터마이징
 
-CSS 변수를 통해 테마를 커스터마이징할 수 있습니다.
-
-```tsx
-import { themeContract } from "@team-numberone/daepiro-design-system";
-
-// CSS 변수 사용
-const customStyles = {
-  color: themeContract.gray[900],
-};
-```
+이 디자인 시스템은 Tailwind CSS v4를 사용하며, `@theme` 문법을 통해 테마를 커스터마이징할 수 있습니다.
 
 ```css
-/* CSS에서 변수 오버라이드 */
-:root {
+/* 사용처에서 Tailwind 테마 오버라이드 */
+@import "tailwindcss";
+
+@theme {
+  /* 색상 커스터마이징 */
+  --color-primary-500: #ff0000;
   --color-gray-900: #1a1a1a;
+  
+  /* 타이포그래피 커스터마이징 */
+  --font-family-sans: "Your Font", sans-serif;
 }
+```
+
+또는 Tailwind 유틸리티 클래스를 직접 사용할 수 있습니다:
+
+```tsx
+<div className="bg-primary-500 text-white p-4 rounded-lg">
+  커스텀 스타일
+</div>
 ```
 
 ## 🛠️ 개발
@@ -239,8 +245,9 @@ src/
 ├── components/     # React 컴포넌트
 ├── hooks/          # 커스텀 훅
 ├── icons/          # 아이콘 컴포넌트
-├── recipes/        # Vanilla Extract 스타일 레시피
+├── styles/         # Tailwind CSS 스타일 (tailwind.css)
 ├── tokens/         # 디자인 토큰 (colors, typography, shadows)
+├── utils/          # 유틸리티 함수 (cn 등)
 └── core/           # 핵심 유틸리티
 ```
 
