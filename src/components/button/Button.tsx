@@ -1,12 +1,19 @@
-import { useButton } from "@/hooks/button/useButton";
-import { type ButtonRecipeProps, button } from "@/recipes/button/button.recipe";
+"use client";
+
+import { cn } from "@/utils/cn";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
+import {
+  baseStyles,
+  iconStyles,
+  type ButtonVariant,
+  variantStyles,
+} from "./Button.styles";
 
-export type { ButtonVariant } from "@/recipes/button/button.recipe";
+export type { ButtonVariant };
 
-export interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    ButtonRecipeProps {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: ButtonVariant;
+  full?: boolean;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
 }
@@ -18,35 +25,37 @@ export function Button({
   rightIcon: rightIconNode,
   className,
   children,
-  type,
+  type = "button",
+  disabled,
   ...rest
 }: ButtonProps) {
-  // 기능: 상태 관리 및 상호작용 처리
-  const api = useButton(rest);
-
-  // 형태: slot별 className
-  const classNames = button({ variant, full });
-
-  // 기능과 형태를 조합하여 최종 렌더링
-  const rootClassName = [classNames.root, className].filter(Boolean).join(" ");
+  const layoutStyles =
+    leftIconNode || rightIconNode ? "justify-between" : "justify-center gap-1";
 
   return (
     <button
-      {...api.rootProps}
-      type={type ?? api.rootProps.type}
-      className={rootClassName}
+      type={type}
+      disabled={disabled}
+      className={cn(
+        baseStyles,
+        layoutStyles,
+        variantStyles[variant],
+        full && "w-full",
+        className
+      )}
+      {...rest}
     >
       {leftIconNode ? (
         <>
-          <span className={classNames.leftIcon}>{leftIconNode}</span>
+          <span className={iconStyles.leftIcon}>{leftIconNode}</span>
           {children}
-          <span className={classNames.iconSpacer} />
+          <span className={iconStyles.iconSpacer} />
         </>
       ) : rightIconNode ? (
         <>
-          <span className={classNames.iconSpacer} />
+          <span className={iconStyles.iconSpacer} />
           {children}
-          <span className={classNames.rightIcon}>{rightIconNode}</span>
+          <span className={iconStyles.rightIcon}>{rightIconNode}</span>
         </>
       ) : (
         children

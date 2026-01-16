@@ -31,6 +31,17 @@ const config: StorybookConfig = {
       },
     };
 
+    // PostCSS 설정 추가 (Tailwind v4)
+    config.css = {
+      ...config.css,
+      postcss: {
+        plugins: [
+          require("@tailwindcss/postcss"),
+          require("autoprefixer"),
+        ],
+      },
+    };
+
     return config;
   },
 };
