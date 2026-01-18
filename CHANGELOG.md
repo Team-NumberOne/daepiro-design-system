@@ -7,6 +7,12 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- 타이포그래피 유틸리티 클래스가 빌드에 포함되지 않던 문제 수정
+  - `@utility` 문법을 `@layer utilities`로 변경
+  - 모든 타이포그래피 클래스(`text-h1`, `text-h6`, `text-body-1-b` 등)가 정상적으로 export됨
+
 ## [0.2.1] - 2026-01-18
 
 ### Changed
