@@ -26,7 +26,13 @@
   - Tailwind 테마 커스터마이징 가이드 개선
   - CSS 변수 사용 예시 추가
 
-## [0.2.0] - 2025-01-14
+### Removed
+
+- vanilla-extract 관련 의존성 완전 제거
+  - `@vanilla-extract/css`, `@vanilla-extract/esbuild-plugin`, `@vanilla-extract/vite-plugin` 제거
+  - `vitest.config.ts`, `vite.config.ts`, `tsup.config.ts`에서 vanilla-extract 플러그인 제거
+
+## [0.2.0] - 2026-01-14
 
 ### Added
 
@@ -53,7 +59,7 @@
 
 - README에 썸네일 이미지 추가
 
-## [0.1.6] - 2025-01-14
+## [0.1.6] - 2026-01-14
 
 ### Added
 
