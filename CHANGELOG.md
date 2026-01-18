@@ -7,6 +7,23 @@
 
 ## [Unreleased]
 
+### Changed
+
+- CSS 파일 구조 개선
+  - `src/styles/tailwind.css`를 관심사별로 분리
+  - `tokens/`: CSS 변수 정의 (colors, typography, shadows)
+  - `theme/`: Tailwind 테마 설정 (colors, typography)
+  - `utilities/`: 커스텀 유틸리티 클래스 (typography)
+- 색상 토큰 재구성
+  - `:root`에 실제 색상 이름으로 CSS 변수 정의 (`--color-orange-*`, `--color-green-*`, `--color-red-*`)
+  - `@theme`에서 시멘틱 색상으로 매핑 (`primary` → Orange, `secondary` → Green, `tertiary` → Red)
+  - 실제 색상(`bg-orange-500`)과 시멘틱 색상(`bg-primary-500`) 모두 사용 가능
+  - CSS 변수(`var(--color-orange-500)`, `var(--color-primary-500)`) 직접 사용 가능
+- README 업데이트
+  - 색상 사용 방법 명확화 (실제 색상 vs 시멘틱 색상)
+  - Tailwind 테마 커스터마이징 가이드 개선
+  - CSS 변수 사용 예시 추가
+
 ## [0.2.0] - 2025-01-14
 
 ### Added

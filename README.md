@@ -143,13 +143,59 @@ import { Icon, Icons } from "@team-numberone/daepiro-design-system";
 
 ### Colors
 
+#### JavaScript/TypeScript에서 사용
+
 ```tsx
 import { colors } from "@team-numberone/daepiro-design-system";
 
-colors.O[500]; // Orange 500
-colors.Gre[300]; // Green 300
-colors.G[900]; // Gray 900
+// 실제 색상 팔레트 (디자인 토큰)
+colors.O[500];   // Orange 500 - #FF6929
+colors.Gre[300]; // Green 300 - #6ACF98
+colors.R[500];   // Red 500 - #FA2C1F
+colors.G[900];   // Gray 900 - #222530
 ```
+
+**CSS 변수로 사용:**
+
+```css
+/* 실제 색상 이름 */
+background-color: var(--color-orange-500);
+color: var(--color-green-300);
+
+/* 시멘틱 색상 이름 */
+background-color: var(--color-primary-500);  /* Orange */
+color: var(--color-secondary-300);           /* Green */
+```
+
+#### Tailwind CSS 유틸리티 클래스로 바로 사용
+
+`@theme`에 정의된 색상은 Tailwind 유틸리티 클래스로 바로 사용할 수 있습니다:
+
+```tsx
+// 실제 색상 이름으로 사용
+<div className="bg-orange-500 text-white">Orange 배경</div>
+<div className="bg-green-500 text-white">Green 배경</div>
+<div className="bg-red-500 text-white">Red 배경</div>
+
+// 시멘틱 색상 이름으로 사용 (Orange → Primary, Green → Secondary, Red → Tertiary)
+<div className="bg-primary-500 text-white">Primary(Orange) 배경</div>
+<div className="bg-secondary-500 text-white">Secondary(Green) 배경</div>
+<div className="bg-tertiary-500 text-white">Tertiary(Red) 배경</div>
+
+// Gray 색상
+<div className="bg-gray-50 text-gray-900">Gray 배경</div>
+<div className="bg-gray-75">Gray-75 배경</div>
+<div className="text-gray-600">Gray 텍스트</div>
+
+// 모든 색상 스케일 사용 가능 (50-900)
+<div className="bg-primary-100 hover:bg-primary-200">호버 효과</div>
+<div className="bg-orange-100 hover:bg-orange-200">Orange 호버 효과</div>
+```
+
+**색상 매핑:**
+- `orange-*` = `primary-*` (Orange → Primary)
+- `green-*` = `secondary-*` (Green → Secondary)
+- `red-*` = `tertiary-*` (Red → Tertiary)
 
 ### Typography
 
@@ -175,26 +221,73 @@ shadows.large;
 
 이 디자인 시스템은 Tailwind CSS v4를 사용하며, `@theme` 문법을 통해 테마를 커스터마이징할 수 있습니다.
 
+#### 기본 사용법
+
+```tsx
+// 색상 사용
+<div className="bg-primary-500 text-white p-4 rounded-lg">
+  Primary 배경
+</div>
+
+// 타이포그래피 사용
+<h1 className="text-h1">제목 1</h1>
+<p className="text-body-1">본문 텍스트</p>
+```
+
+#### 테마 오버라이드 (사용처에서)
+
+디자인 시스템의 색상을 커스터마이징할 수 있습니다. 예를 들어, Primary 색상을 그린(Secondary)으로 변경:
+
 ```css
-/* 사용처에서 Tailwind 테마 오버라이드 */
+/* globals.css */
+@import "@team-numberone/daepiro-design-system/dist/index.css";
 @import "tailwindcss";
 
+/* Primary 색상을 Green으로 오버라이드 */
 @theme {
-  /* 색상 커스터마이징 */
+  --color-primary-50: var(--color-green-50);
+  --color-primary-100: var(--color-green-100);
+  --color-primary-200: var(--color-green-200);
+  --color-primary-300: var(--color-green-300);
+  --color-primary-400: var(--color-green-400);
+  --color-primary-500: var(--color-green-500);
+  --color-primary-600: var(--color-green-600);
+  --color-primary-700: var(--color-green-700);
+  --color-primary-800: var(--color-green-800);
+  --color-primary-900: var(--color-green-900);
+}
+
+/* 디자인 시스템 컴포넌트의 CSS 변수도 오버라이드 */
+:root {
+  --color-primary-50: var(--color-green-50);
+  --color-primary-100: var(--color-green-100);
+  --color-primary-200: var(--color-green-200);
+  --color-primary-300: var(--color-green-300);
+  --color-primary-400: var(--color-green-400);
+  --color-primary-500: var(--color-green-500);
+  --color-primary-600: var(--color-green-600);
+  --color-primary-700: var(--color-green-700);
+  --color-primary-800: var(--color-green-800);
+  --color-primary-900: var(--color-green-900);
+}
+```
+
+이렇게 하면:
+- 사용처의 `bg-primary-500` 클래스가 Green 색상으로 적용됩니다
+- 디자인 시스템의 Button 컴포넌트도 Green 색상을 사용합니다
+- 디자인 시스템이 제공하는 `--color-green-*`, `--color-orange-*`, `--color-red-*` CSS 변수를 참조할 수 있습니다
+
+#### 커스텀 색상 정의
+
+```css
+@theme {
+  /* 완전히 새로운 색상 정의 */
   --color-primary-500: #ff0000;
   --color-gray-900: #1a1a1a;
   
   /* 타이포그래피 커스터마이징 */
   --font-family-sans: "Your Font", sans-serif;
 }
-```
-
-또는 Tailwind 유틸리티 클래스를 직접 사용할 수 있습니다:
-
-```tsx
-<div className="bg-primary-500 text-white p-4 rounded-lg">
-  커스텀 스타일
-</div>
 ```
 
 ## 🛠️ 개발
