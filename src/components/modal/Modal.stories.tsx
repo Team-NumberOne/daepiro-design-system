@@ -327,6 +327,82 @@ export const WithActionButton: Story = {
   },
 };
 
+export const WithActionButtonLeftIcon: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(false);
+
+    return (
+      <>
+        <Button onClick={() => setOpen(true)}>모달 열기</Button>
+        <Modal
+          {...args}
+          open={open}
+          onOpenChange={setOpen}
+          actionButton={{
+            label: "119 신고하기",
+            leftIcon: <span style={{ fontSize: "18px" }}>📞</span>,
+            onClick: () => {
+              alert("119에 신고되었습니다!");
+              setOpen(false);
+            },
+          }}
+        >
+          {args.children}
+        </Modal>
+      </>
+    );
+  },
+  args: {
+    size: "medium",
+    children: (
+      <div>
+        <h2 style={{ marginTop: 0, marginBottom: "16px" }}>맞아요!</h2>
+        <p style={{ margin: 0 }}>
+          119에 도움을 요청해보세요! (왼쪽 아이콘 포함)
+        </p>
+      </div>
+    ),
+  },
+};
+
+export const WithActionButtonRightIcon: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(false);
+
+    return (
+      <>
+        <Button onClick={() => setOpen(true)}>모달 열기</Button>
+        <Modal
+          {...args}
+          open={open}
+          onOpenChange={setOpen}
+          actionButton={{
+            label: "다음 단계",
+            rightIcon: <span style={{ fontSize: "18px" }}>→</span>,
+            onClick: () => {
+              alert("다음 단계로 이동합니다!");
+              setOpen(false);
+            },
+          }}
+        >
+          {args.children}
+        </Modal>
+      </>
+    );
+  },
+  args: {
+    size: "medium",
+    children: (
+      <div>
+        <h2 style={{ marginTop: 0, marginBottom: "16px" }}>진행하시겠어요?</h2>
+        <p style={{ margin: 0 }}>
+          다음 단계로 진행하려면 버튼을 클릭하세요. (오른쪽 아이콘 포함)
+        </p>
+      </div>
+    ),
+  },
+};
+
 export const AllSizes: Story = {
   render: () => {
     const sizes = ["small", "medium", "large"] as const;

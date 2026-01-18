@@ -525,4 +525,66 @@ describe("Modal 컴파운드 패턴", () => {
       expect(actionButton).toBeInTheDocument();
     });
   });
+
+  describe("actionButton 아이콘", () => {
+    it("actionButton에 leftIcon이 표시되는지", () => {
+      render(
+        <Modal
+          open={true}
+          onOpenChange={() => {}}
+          actionButton={{
+            label: "확인",
+            leftIcon: <span data-testid="left-icon">←</span>,
+          }}
+        >
+          모달 내용
+        </Modal>
+      );
+
+      expect(screen.getByTestId("left-icon")).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: /확인/ })).toBeInTheDocument();
+    });
+
+    it("actionButton에 rightIcon이 표시되는지", () => {
+      render(
+        <Modal
+          open={true}
+          onOpenChange={() => {}}
+          actionButton={{
+            label: "확인",
+            rightIcon: <span data-testid="right-icon">→</span>,
+          }}
+        >
+          모달 내용
+        </Modal>
+      );
+
+      expect(screen.getByTestId("right-icon")).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: /확인/ })).toBeInTheDocument();
+    });
+
+    it("actionButton의 아이콘과 onClick이 함께 동작하는지", async () => {
+      const handleActionClick = vi.fn();
+      const user = userEvent.setup();
+      render(
+        <Modal
+          open={true}
+          onOpenChange={() => {}}
+          actionButton={{
+            label: "확인",
+            onClick: handleActionClick,
+            leftIcon: <span data-testid="left-icon">✓</span>,
+          }}
+        >
+          모달 내용
+        </Modal>
+      );
+
+      const actionButton = screen.getByRole("button", { name: /확인/ });
+      expect(screen.getByTestId("left-icon")).toBeInTheDocument();
+
+      await user.click(actionButton);
+      expect(handleActionClick).toHaveBeenCalledTimes(1);
+    });
+  });
 });
