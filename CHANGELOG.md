@@ -7,6 +7,8 @@
 
 ## [Unreleased]
 
+## [0.2.1] - 2025-01-18
+
 ### Changed
 
 - CSS 파일 구조 개선
@@ -193,7 +195,8 @@
 - Storybook 설정
 - Vitest 테스트 설정
 
-[Unreleased]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.1.6...v0.2.0
 [0.1.6]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.1.5...v0.1.6
 [0.1.5]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.1.4...v0.1.5
