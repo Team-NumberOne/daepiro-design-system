@@ -1,6 +1,6 @@
 {
   "name": "@team-numberone/daepiro-design-system",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "대피로 디자인 시스템 - React 컴포넌트 라이브러리",
   "private": false,
   "packageManager": "pnpm@10.25.0",
@@ -66,9 +66,6 @@
     "@types/node": "^24.10.2",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "@vanilla-extract/css": "^1.17.5",
-    "@vanilla-extract/esbuild-plugin": "^2.3.20",
-    "@vanilla-extract/vite-plugin": "^5.1.3",
     "@vitejs/plugin-react-swc": "^4.2.2",
     "@vitest/coverage-v8": "4.0.15",
     "@vitest/ui": "^4.0.15",
