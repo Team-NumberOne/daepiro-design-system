@@ -1,4 +1,3 @@
-import { vanillaExtractPlugin } from "@vanilla-extract/esbuild-plugin";
 import { defineConfig } from "tsup";
 
 export default defineConfig({
@@ -8,5 +7,4 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   external: ["react", "react-dom"],
-  esbuildPlugins: [vanillaExtractPlugin()],
 });
