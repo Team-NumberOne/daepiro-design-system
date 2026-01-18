@@ -7,6 +7,14 @@
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-01-18
+
+### Fixed
+
+- 타이포그래피 유틸리티 클래스가 빌드에 포함되지 않던 문제 수정
+  - `@utility` 문법을 `@layer utilities`로 변경
+  - 모든 타이포그래피 클래스(`text-h1`, `text-h6`, `text-body-1-b` 등)가 정상적으로 export됨
+
 ## [0.2.1] - 2026-01-18
 
 ### Changed
@@ -201,7 +209,8 @@
 - Storybook 설정
 - Vitest 테스트 설정
 
-[Unreleased]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.2.2...HEAD
+[0.2.2]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.1.6...v0.2.0
 [0.1.6]: https://github.com/Team-NumberOne/daepiro-design-system/compare/v0.1.5...v0.1.6
