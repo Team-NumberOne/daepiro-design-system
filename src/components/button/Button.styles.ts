@@ -5,8 +5,8 @@
 export type ButtonVariant = "default" | "gray" | "primary";
 
 export const baseStyles = [
-  // Typography (subtitle-1)
-  "font-semibold text-base leading-6 tracking-[0.15px]",
+  // Typography (body-1-b)
+  "text-body-1-b",
   // Layout
   "rounded-lg px-4 h-12 flex items-center",
   // Base states

@@ -7,6 +7,15 @@
 
 ## [Unreleased]
 
+## [0.2.3] - 2026-01-18
+
+### Changed
+
+- Button 컴포넌트 타이포그래피 개선
+  - Tailwind 개별 유틸리티 클래스(`font-semibold text-base leading-6 tracking-[0.15px]`)를 `text-body-1-b` 유틸리티 클래스로 변경
+  - 디자인 시스템의 타이포그래피 일관성 향상
+  - CSS 변수 기반으로 테마 변경 용이
+
 ## [0.2.2] - 2026-01-18
 
 ### Fixed
