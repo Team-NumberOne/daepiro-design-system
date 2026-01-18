@@ -88,6 +88,14 @@
     letter-spacing: var(--letter-spacing-body-2);
   }
 
+  .text-body-2-b {
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-body-2);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-body-2);
+    letter-spacing: var(--letter-spacing-body-2);
+  }
+
   .text-caption {
     font-family: var(--font-family-sans);
     font-size: var(--font-size-caption);
