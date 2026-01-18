@@ -7,6 +7,19 @@
 
 ## [Unreleased]
 
+## [0.2.4] - 2026-01-18
+
+### Added
+
+- 타이포그래피 유틸리티 클래스 추가
+  - `text-body-2-b` 클래스 추가 (Body 2 Bold)
+  - font-size: 14px, font-weight: 700, line-height: 22px, letter-spacing: -0.25px
+
+### Fixed
+
+- 타이포그래피 스타일 가이드 완성도 향상
+  - 디자인 시스템 가이드에 맞춰 누락된 타이포그래피 클래스 추가
+
 ## [0.2.3] - 2026-01-18
 
 ### Changed
