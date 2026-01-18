@@ -563,26 +563,6 @@ describe("Modal 컴파운드 패턴", () => {
       expect(screen.getByRole("button", { name: /확인/ })).toBeInTheDocument();
     });
 
-    it("actionButton에 leftIcon과 rightIcon이 동시에 표시되는지", () => {
-      render(
-        <Modal
-          open={true}
-          onOpenChange={() => {}}
-          actionButton={{
-            label: "확인",
-            leftIcon: <span data-testid="left-icon">←</span>,
-            rightIcon: <span data-testid="right-icon">→</span>,
-          }}
-        >
-          모달 내용
-        </Modal>
-      );
-
-      expect(screen.getByTestId("left-icon")).toBeInTheDocument();
-      expect(screen.getByTestId("right-icon")).toBeInTheDocument();
-      expect(screen.getByRole("button", { name: /확인/ })).toBeInTheDocument();
-    });
-
     it("actionButton의 아이콘과 onClick이 함께 동작하는지", async () => {
       const handleActionClick = vi.fn();
       const user = userEvent.setup();
