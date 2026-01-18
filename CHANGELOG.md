@@ -7,6 +7,28 @@
 
 ## [Unreleased]
 
+## [0.2.4] - 2026-01-18
+
+### Added
+
+- Modal 컴포넌트 actionButton에 아이콘 지원
+  - `leftIcon`, `rightIcon` prop 추가
+  - Button 컴포넌트와 동일한 방식으로 아이콘 렌더링
+  - 스토리북 예시 추가 (`WithActionButtonLeftIcon`, `WithActionButtonRightIcon`)
+
+### Changed
+
+- Modal actionButton 인터페이스 확장
+  - `actionButton.leftIcon?: ReactNode` - 버튼 왼쪽에 표시할 아이콘
+  - `actionButton.rightIcon?: ReactNode` - 버튼 오른쪽에 표시할 아이콘
+
+### Fixed
+
+- Modal actionButton 테스트 추가
+  - leftIcon, rightIcon 단독 렌더링 테스트
+  - leftIcon + rightIcon 동시 렌더링 테스트
+  - 아이콘과 onClick 이벤트 통합 테스트
+
 ## [0.2.3] - 2026-01-18
 
 ### Changed

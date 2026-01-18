@@ -200,6 +200,8 @@ export interface ModalProps extends ModalRootProps {
   actionButton?: {
     label: string;
     onClick?: () => void;
+    leftIcon?: ReactNode;
+    rightIcon?: ReactNode;
   };
 }
 
@@ -222,7 +224,13 @@ export function Modal({
                 display: "flex",
               }}
             >
-              <Button variant="primary" onClick={actionButton.onClick} full>
+              <Button
+                variant="primary"
+                onClick={actionButton.onClick}
+                leftIcon={actionButton.leftIcon}
+                rightIcon={actionButton.rightIcon}
+                full
+              >
                 {actionButton.label}
               </Button>
             </div>

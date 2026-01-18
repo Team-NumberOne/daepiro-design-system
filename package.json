@@ -1,6 +1,6 @@
 {
   "name": "@team-numberone/daepiro-design-system",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "대피로 디자인 시스템 - React 컴포넌트 라이브러리",
   "private": false,
   "packageManager": "pnpm@10.25.0",
